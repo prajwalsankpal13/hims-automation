@@ -1,2 +1,3 @@
 selenium
 pytest
+install Faker( pip install Faker )
