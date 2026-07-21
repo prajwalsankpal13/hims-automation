@@ -24,5 +24,7 @@ def test_patient_registration(logged_in_driver):
     registration.select_dob_today()
     registration.select_preferred_date_today()
     registration.click_upload_file(r"E:\superman modi.jpg")
+    registration.select_department("General Surgery")
+    registration.select_doctor("Dr. Reshma — General Medicine")
     registration.check_verify_checkbox()
     registration.click_submit()

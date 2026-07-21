@@ -16,7 +16,8 @@ class Patient_Registration:
     PRE_DATE = (By.XPATH, "//label[contains(text(),'Preferred Date')]/following::button[1]")
     CHECKBOX = (By.XPATH, "(//input[@type='checkbox'])[1]")
     SUBMIT = (By.XPATH, "//button[@type='submit']")
-
+    DEPARTMENT =(By.XPATH, "//div[@class='space-y-4']//div[1]//div[2]//div[3]//div[1]//select[1]")
+    DOCTOR =(By.XPATH, "/html[1]/body[1]/div[2]/div[1]/main[1]/div[1]/div[1]/form[1]/div[1]/div[2]/div[1]/div[2]/div[4]/select[1]")
     TODAY_BUTTON = (By.XPATH, "//button[normalize-space()='Today']")
 
     def __init__(self, driver):
@@ -54,6 +55,13 @@ class Patient_Registration:
         if not checkbox.is_selected():
             checkbox.click()
 
+    def select_department(self,department):
+        Select(self.driver.find_element(*self.DEPARTMENT)).select_by_visible_text(department)
+
+    def select_doctor(self,doctor):
+        Select(self.driver.find_element(*self.DOCTOR)).select_by_visible_text(doctor)
+
     def click_submit(self):
-        self.driver.find_element(*self.SUBMIT).click()
+        submit_btn = self.driver.find_element(*self.SUBMIT)
+        self.driver.execute_script("arguments[0].click();", submit_btn)
         time.sleep(3)
