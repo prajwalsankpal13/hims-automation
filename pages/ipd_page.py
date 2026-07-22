@@ -20,6 +20,7 @@ class IPDPage:
 
     def click_IPD(self):
         self.driver.find_element(*self.IPD).click()
+        time.sleep(1)
 
     def click_admit(self):
         self.driver.find_element(*self.ADMIT_PAT).click()
